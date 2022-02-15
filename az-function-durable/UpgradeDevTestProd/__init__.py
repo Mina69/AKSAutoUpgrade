@@ -84,7 +84,7 @@ def main(env: str) -> str:
                       if version_preview_for_stable == None and latest_version != current_version :
                         print("Upgrading to a new version....")
                         param=ManagedCluster(location=location, kubernetes_version=latest_version,agent_pool_profiles=[ManagedClusterAgentPoolProfile(orchestrator_version=latest_version,name=agent_pool_name,mode=x.mode,type=x.type_properties_type)])
-                        #update_aks=containerservice_client.managed_clusters.begin_create_or_update(resource_group_name=group.name,resource_name=resource.name,parameters=param) 
+                        update_aks=containerservice_client.managed_clusters.begin_create_or_update(resource_group_name=group.name,resource_name=resource.name,parameters=param) 
                                                
                       else:
                         print("Either kubernetes version is the latest one or the stable version is in preview!") 
