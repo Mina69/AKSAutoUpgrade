@@ -49,12 +49,12 @@ def upgrade(day, daynumber, env, function, context: df.DurableOrchestrationConte
   print("NextUpdateDay is:", day)
   print("Env:",env ,"would be upgraded in:", day)
   if today == day:
-    send_to_slack("${env} env is started the upgrade process!")
+    send_to_slack("%s is started the upgrade process!"% env)
     time= datetime.datetime.combine(day,datetime.datetime.now().time())
     yield context.create_timer(time)
     result = yield context.call_activity(function, env)
     print("Upgraded", env, result)
-    send_to_slack("Env:", env , "upgrading process is done!")
+    send_to_slack("Env: %s upgrading process is done!"% env)
   if today != day:
     pass
     print("It would be done in the comming days!")
